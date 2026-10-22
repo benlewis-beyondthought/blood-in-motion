@@ -1,0 +1,19 @@
+name: Validate shared demo data
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  offline-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python tools/build_dataset.py
+      - run: git diff --exit-code -- data/canonical data/alternatives data/integration_report.json
+      - run: python -m blood_response validate
+      - run: python -m unittest discover -s tests -v
+      - run: python paris-protest-social-simulation-v1/validate_dataset.py
+      - run: python run_decisions_replay.py --self-test
