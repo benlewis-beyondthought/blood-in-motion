@@ -1,0 +1,57 @@
+{
+  "scope": "Same synthetic weekend plus identical initial 8-unit request; deterministic controllers",
+  "runs": {
+    "greedy": {
+      "stats": {
+        "available": 397,
+        "reserved": 0,
+        "in_transit": 0,
+        "requested": 469,
+        "fulfilled": 392,
+        "unmet_at_deadline": 77,
+        "expired": 0,
+        "api_calls": 0,
+        "api_successes": 0,
+        "api_budget_remaining": null,
+        "fallbacks": 0,
+        "missions": 76,
+        "conservation": "PASS"
+      },
+      "unmet_by_priority": {
+        "critical": 47,
+        "routine": 30
+      },
+      "elapsed_seconds": 14.062,
+      "decisions": 76,
+      "missed_requests": 14
+    },
+    "rolling": {
+      "stats": {
+        "available": 391,
+        "reserved": 0,
+        "in_transit": 0,
+        "requested": 469,
+        "fulfilled": 398,
+        "unmet_at_deadline": 71,
+        "expired": 0,
+        "api_calls": 0,
+        "api_successes": 0,
+        "api_budget_remaining": null,
+        "fallbacks": 0,
+        "missions": 76,
+        "conservation": "PASS"
+      },
+      "unmet_by_priority": {
+        "critical": 47,
+        "routine": 24
+      },
+      "elapsed_seconds": 80.406,
+      "decisions": 76,
+      "missed_requests": 15
+    }
+  },
+  "identical_requests": true,
+  "canonical_hashes_unchanged": true,
+  "additional_units_fulfilled": 6,
+  "limitation": "One authored scenario. Rolling search is bounded, not globally optimal. No new model benchmark or clinical validation."
+}

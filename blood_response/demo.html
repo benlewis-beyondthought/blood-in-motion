@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paris response replay</title>
+<style>
+:root{font:16px/1.5 "Segoe UI",Arial,sans-serif;color:#172b39;background:#f3f6f8;--accent:#075b73;--muted:#526775;--line:#d6e0e6}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{min-height:44px;padding:.55rem .9rem;border:1px solid #9aadb9;border-radius:6px;background:white;color:#172b39;cursor:pointer}button:hover{background:#e9f1f5}button:disabled{opacity:.5;cursor:default}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #b65705;outline-offset:3px}.skip{position:absolute;top:-5rem;left:1rem;padding:1rem;background:white;z-index:5}.skip:focus{top:1rem}
+header,main,footer{max-width:1440px;margin:auto;padding:1.5rem 2rem}header{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}h1{font-size:1.8rem;line-height:1.2;margin:0 0 .4rem;font-weight:650;letter-spacing:-.04rem}h2{font-size:1.16rem;margin:0 0 .8rem}h3{font-size:1rem;margin:1rem 0 .4rem}p{margin:.3rem 0 .9rem}.muted{color:var(--muted)}.small{font-size:.85rem}.label{font-size:.8rem;color:var(--muted)}.badge{display:inline-block;font-size:.78rem;font-weight:650;padding:.2rem .5rem;border-radius:4px;background:#e6eef3;color:#294757;white-space:normal}.URGENT_REVIEW,.CRITICAL{background:#fce7e7;color:#8c2028}.REVIEW,.LOW{background:#fff0d6;color:#744303}.MONITOR{background:#deedf8;color:#164d71}.IGNORE,.UNKNOWN{background:#edf0f2;color:#4c5961}.OK{background:#def2e9;color:#135b43}.notice{border-inline-start:4px solid var(--accent);padding:.8rem 1rem;background:#e6f0f4;margin-bottom:1.5rem}.controls,.panel,.stats{background:#fff;border:1px solid var(--line);border-radius:8px}.controls{padding:1rem 1.2rem;margin-bottom:1.5rem}.controlrow{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}.controlrow>label{flex:1;min-width:13rem}.range{width:100%;min-height:36px;accent-color:var(--accent)}.clock{font-size:1.25rem;font-weight:650;font-variant-numeric:tabular-nums}.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:1.5rem}.stat{padding:1.1rem 1.25rem}.stat strong{display:block;font-size:1.6rem;font-weight:650;font-variant-numeric:tabular-nums}.columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:1.5rem;align-items:start}.panel{padding:1.25rem;margin-bottom:1.5rem;min-width:0}.eventlist{display:grid;gap:.6rem}.event{display:block;width:100%;text-align:start;min-height:44px;padding:.75rem}.event[aria-pressed=true]{border:2px solid var(--accent);padding:calc(.75rem - 1px);background:#edf6f9}.event .meta{display:flex;gap:.4rem;flex-wrap:wrap;margin:.4rem 0}.rowhead{display:flex;justify-content:space-between;align-items:start;gap:1rem}.rowhead button{font-size:.85rem}.post{background:#f5f8fa;border-radius:6px;padding:1rem;margin:.7rem 0;overflow-wrap:anywhere}.post p{margin-bottom:.4rem}.evidence{max-height:28rem;overflow:auto;padding:.15rem}.evidence:focus-visible{outline:3px solid #b65705}.context{padding:.7rem;background:#f3f7f9;border-radius:6px;margin:.7rem 0}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.86rem;text-align:start;font-variant-numeric:tabular-nums}th,td{padding:.65rem .5rem;text-align:start;border-bottom:1px solid #e3e9ed;vertical-align:top}th{font-size:.76rem;color:var(--muted);font-weight:600}td.number{text-align:end}caption{text-align:start;color:var(--muted);padding-bottom:.5rem}summary{cursor:pointer;min-height:44px;padding:.6rem 0;color:var(--accent);font-weight:600}details{margin-top:1rem}.empty{padding:1rem 0;color:var(--muted)}footer{font-size:.85rem;color:var(--muted);padding-top:0}a{color:var(--accent)}.sr{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}#current-kind{margin-inline-start:.6rem}#site-filter{max-width:100%}noscript{display:block;padding:2rem;background:#fff0d6}@media(max-width:900px){.columns{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header,main,footer{padding:1.2rem}.evidence{max-height:none;overflow:visible}}@media(max-width:450px){header{display:block}.stats{grid-template-columns:1fr 1fr}.stat{padding:.8rem}.stat strong{font-size:1.35rem}.panel{padding:1rem}.rowhead{display:block}.controlrow>label{min-width:100%}.controlrow button{flex:1}.clock{font-size:1.05rem}}
+.columns>div{min-width:0}.eventlist{max-height:26rem;overflow:auto;padding:.2rem}#proposals{max-height:30rem;overflow:auto;padding:.2rem}.eventlist:focus-visible,#proposals:focus-visible{outline:3px solid #b65705;outline-offset:3px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to replay</a>
+<header><div><h1>Paris response replay</h1><p class="muted">Public reports, inventory and a plan for review.</p></div><span class="badge">Synthetic · Offline</span></header>
+<main id="main">
+<div class="notice"><strong id="origin-label">Scripted forward decisions</strong><p class="small" id="origin-note">Hypothetical 23–25 October 2026. No new API run. Social evidence triggers investigation; it does not add blood-demand units.</p></div>
+<section class="controls" aria-label="Replay controls">
+ <div class="rowhead"><div><div id="clock" class="clock"></div><p id="inventory-time" class="small muted"></p></div><div><span id="current-kind" class="badge"></span><p id="step-label" class="small muted"></p></div></div>
+ <div class="controlrow"><button id="previous">Previous step</button><button id="next">Next step</button><button class="primary" id="next-report">Next report</button><label for="timeline"><span class="sr">Replay position</span><input class="range" id="timeline" type="range" min="0" step="1" value="0"></label></div>
+ <div id="announcement" class="sr" role="status"></div>
+</section>
+<section class="stats" aria-label="Situation summary">
+ <div class="stat"><span class="label">Available now · red-cell units</span><strong id="available"></strong></div>
+ <div class="stat"><span class="label">Next-day gap after proposals</span><strong id="gap"></strong></div>
+ <div class="stat"><span class="label">Transfer proposals · units</span><strong id="proposals-count"></strong></div>
+ <div class="stat"><span class="label">Social reports seen</span><strong id="seen"></strong></div>
+</section>
+<div class="columns">
+<div>
+ <section class="panel"><h2>Latest update</h2><div id="change"></div></section>
+ <section class="panel"><h2>Events to investigate</h2><p class="small muted">Select an event to inspect its evidence and candidate facilities. Regional and unlocated context stays separate. Scroll this list for more events.</p><div id="events" class="eventlist" tabindex="0" aria-label="Available events"></div></section>
+ <section class="panel"><h2>Supporting reports</h2><div id="evidence" class="evidence" tabindex="0" aria-label="Reports available at the selected time"></div></section>
+</div>
+<div>
+ <section class="panel"><div class="rowhead"><div><h2>Hospital stock and next-day demand</h2><p id="planning-day" class="small muted"></p></div><button id="all-sites">Show all hospitals</button></div>
+ <div id="candidate-note" class="context small"></div>
+ <label for="site-filter" class="small">Inspect hospital</label> <select id="site-filter"></select>
+ <div class="tablewrap"><table><caption>Current stock is separate from next-day usable stock and demand.</caption><thead><tr><th scope="col">Hospital</th><th scope="col">Now</th><th scope="col">Usable next day</th><th scope="col">Forecast</th><th scope="col">Proposed inbound</th><th scope="col">Uncovered</th></tr></thead><tbody id="hospitals"></tbody></table></div>
+ <details><summary>Inspect blood groups and stock thresholds</summary><p class="small muted">Status compares next-day usable stock with historical usage: critical below 3 days, low below 6. Zero stock is critical; missing demand is unknown. Status is not the same as an uncovered next-day requirement.</p><div class="tablewrap"><table><thead><tr><th scope="col">Site / group</th><th scope="col">Status</th><th scope="col">Usable next day</th><th scope="col">Historical mean</th><th scope="col">Planned</th><th scope="col">Forecast</th><th scope="col">Uncovered</th></tr></thead><tbody id="blood-groups"></tbody></table></div></details>
+ </section>
+ <section class="panel"><h2>Transfer proposals for review</h2><p class="small muted">These proposals address the existing historical/planned demand estimate. They do not result from social scores. No units are reserved or dispatched. Scroll to inspect more proposals.</p><div id="proposals" tabindex="0" aria-label="Proposals for the visible hospitals"></div><p id="bank-reserve" class="small muted"></p></section>
+</div>
+</div>
+<details class="panel"><summary>Data sources and modelling limits</summary><ul id="limits"></ul><p class="small muted">The recorded 16–18 October Decisions API results remain separate. Their agreement scores are not results for this forward replay. Simulation time uses Europe/Paris; the Sunday clock change includes two distinct 02:00 hours.</p></details>
+</main>
+<footer>Hackathon demonstration. Real facility names are paired with unverified synthetic counts and assumptions. This screen is not a clinical instruction or a live stock feed.</footer>
+<noscript>Enable JavaScript to use the replay. The same frames and provenance are available in demo.json.</noscript>
+<script id="demo-data" type="application/json">__DEMO_JSON__</script>
+<script>
+"use strict";
+const demo=JSON.parse(document.getElementById('demo-data').textContent);
+const $=id=>document.getElementById(id);
+const siteById=new Map(demo.sites.map(s=>[s.site_id,s]));
+const reportById=new Map(demo.reports.map(r=>[r.report_id,r]));
+const hospitals=demo.sites.filter(s=>s.site_type==='hospital');
+let index=0, selectedEvent=null, explicitSite='all';
+const words=s=>(s||'unknown').replaceAll('_',' ').toLowerCase();
+const date=value=>new Intl.DateTimeFormat('en-GB',{timeZone:demo.timezone,day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(new Date(value));
+function node(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
+function badge(value){return node('span',words(value),'badge '+value);}
+function cell(row,value,number=false){row.append(node('td',value===null?'Unknown':String(value),number?'number':''));}
+function total(rows,key){return rows.some(r=>r[key]===null)?null:rows.reduce((sum,r)=>sum+r[key],0);}
+function rowAt(){return demo.frames[index];}
+function eventAt(){return rowAt().social.events.find(e=>e.event_id===selectedEvent);}
+function visibleHospitals(){if(explicitSite!=='all')return hospitals.filter(h=>h.site_id===explicitSite);const ev=eventAt();return ev&&ev.candidate_site_ids.length?hospitals.filter(h=>ev.candidate_site_ids.includes(h.site_id)):hospitals;}
+function render(){
+ const frame=rowAt(),ev=eventAt(),seen=frame.social.seen_report_ids;
+ $('clock').textContent=date(frame.at);$('inventory-time').textContent='Latest inventory: '+date(frame.inventory_as_of)+' · Planning as of this hourly snapshot';
+ $('current-kind').textContent=words(frame.kind);$('step-label').textContent='Step '+index+' of '+(demo.frames.length-1);
+ $('timeline').value=index;$('timeline').setAttribute('aria-valuetext',date(frame.at)+', '+words(frame.kind));
+ $('previous').disabled=index===0;$('next').disabled=index===demo.frames.length-1;$('next-report').disabled=!demo.frames.slice(index+1).some(f=>f.kind==='social_report');
+ $('available').textContent=frame.inventory.available_units;$('gap').textContent=frame.plan.unknown_demand_rows?'Unknown':frame.plan.uncovered_units;
+ $('proposals-count').textContent=frame.plan.transfer_proposals.length+' · '+frame.plan.transfer_proposals.reduce((n,p)=>n+p.units,0);
+ $('seen').textContent=seen.length+' / '+demo.reports.length;
+ $('events').replaceChildren();
+ if(!frame.social.events.length)$('events').append(node('p','No event yet. Select Next report to reach the first post.','empty'));
+ for(const event of frame.social.events){
+  const b=node('button',undefined,'event');b.type='button';b.setAttribute('aria-pressed',String(event.event_id===selectedEvent));
+  b.append(node('strong',words(event.zone)));const meta=node('div',undefined,'meta');meta.append(badge(event.review_priority),badge(event.event_phase));b.append(meta);
+  b.append(node('div',`${words(event.evidence_status)} · ${event.report_ids.length} ${event.report_ids.length===1?'report':'reports'}`,'small'));
+  b.append(node('div',event.route==='paris_review'?'Paris review candidates':'Regional or unlocated context','small muted'));
+  b.addEventListener('click',()=>{selectedEvent=event.event_id;explicitSite='all';$('site-filter').value='all';render();});$('events').append(b);
+ }
+ $('evidence').replaceChildren();
+ const evidenceIds=ev?ev.report_ids:seen.slice(-4);
+ if(!evidenceIds.length)$('evidence').append(node('p','Incoming reports will appear here as their availability time is reached.','empty'));
+ for(const rid of evidenceIds.slice().reverse()){
+  const report=reportById.get(rid),article=node('article',undefined,'post');article.append(node('div',rid+' · '+date(report.available_at),'small muted'));
+  article.append(node('p',report.text));article.append(node('div',report.account_id+' · '+words(report.account_role),'small muted'));
+  const reportFrame=demo.frames.find(f=>f.report_id===rid);if(reportFrame)article.append(badge(reportFrame.social.handoff.paris_action));$('evidence').append(article);
+ }
+ $('candidate-note').textContent=ev?(ev.candidate_site_ids.length?'Candidate facilities: '+ev.candidate_site_ids.join(', ')+'. Coarse demo geography only; no patient destination or institutional identity is established.':'No Paris facility mapping is established for this event. All hospitals remain available for manual inspection.'):'Showing all hospitals. Select an event to narrow the view to its coarse review candidates.';
+ $('planning-day').textContent='Next full planning day: '+frame.plan.planning_date+' · provisional maximum of historical mean and planned units';
+ $('hospitals').replaceChildren();$('blood-groups').replaceChildren();
+ const visible=visibleHospitals();
+ for(const hospital of visible){const rows=frame.plan.rows.filter(r=>r.site_id===hospital.site_id),tr=node('tr');
+  cell(tr,hospital.site_id+' · '+hospital.name);cell(tr,frame.inventory.rows.filter(r=>r.site_id===hospital.site_id).reduce((n,r)=>n+r.available_units,0),true);
+  for(const key of ['local_usable_units','forecast_units','suggested_inbound_units','uncovered_units'])cell(tr,total(rows,key),true);$('hospitals').append(tr);
+  for(const r of rows){const br=node('tr');cell(br,r.site_id+' / '+r.blood_type);const status=node('td');status.append(badge(r.stock_status));br.append(status);for(const key of ['local_usable_units','baseline_daily_units','planned_units','forecast_units','uncovered_units'])cell(br,r[key],true);$('blood-groups').append(br);}
+ }
+ $('proposals').replaceChildren();const proposals=frame.plan.transfer_proposals.filter(p=>visible.some(h=>h.site_id===p.to_site_id));
+ if(!proposals.length)$('proposals').append(node('p','No transfer proposal for the visible hospitals at this step. Inspect uncovered demand and unknown routes in the data.','empty'));
+ for(const p of proposals){const article=node('div',undefined,'context');article.append(node('strong',`${p.from_site_id} → ${p.to_site_id} · ${p.blood_type} · ${p.units} ${p.units===1?'unit':'units'}`));
+ article.append(node('p','Estimated '+p.estimated_minutes+' minutes under the '+p.traffic_assumption+' fixture assumption. Proposal requires review.','small'));
+ const details=node('details'),sum=node('summary','Inspect proposed unit IDs');details.append(sum,node('p',p.unit_ids.join(', '),'small'));article.append(details);$('proposals').append(article);}
+ $('bank-reserve').textContent='Planner reserve: '+frame.plan.bank_reserve_days+' baseline day at each bank. Unknown external ETAs are excluded.';
+ $('change').replaceChildren();
+ if(frame.kind==='social_report'){const hand=frame.social.handoff;$('change').append(node('p',frame.report_id+' received at '+date(frame.at)+'.'),badge(hand.paris_action));
+ $('change').append(node('p',reportById.get(frame.report_id).text,'post'));
+ $('change').append(node('p','Contribution: '+words(hand.contribution)+'. Social-derived demand units: unknown; none added.','small'));
+ $('change').append(node('p','Inventory and the existing transfer plan are unchanged by this report.','small muted'));}
+ else if(frame.tick){const t=frame.tick;$('change').append(node('p','Seeded hourly simulation: '+t.requested+' requested, '+t.used+' used, '+t.donated+' synthetic arrivals, '+t.expired+' expired.'));
+ $('change').append(node('p','Unmet simulated requests this hour: '+t.unmet_requests+'. Conservation: '+t.inventory_conservation+'.','small'));
+ $('change').append(node('p','Simulated replenishment is part of the ledger model. Displayed planner proposals have not been executed.','small muted'));}
+ else $('change').append(node('p','Starting inventory: 22 October 2026, noon assumed. The older alternative inventory is excluded. The next-day planner has run; no social report is available yet.'));
+}
+function go(next){index=Math.max(0,Math.min(demo.frames.length-1,next));render();const n=rowAt().social.reports_seen;$('announcement').textContent=`${date(rowAt().at)}. ${n} ${n===1?'report':'reports'} available.`;}
+$('timeline').max=demo.frames.length-1;$('timeline').addEventListener('input',e=>go(Number(e.target.value)));
+$('previous').addEventListener('click',()=>go(index-1));$('next').addEventListener('click',()=>go(index+1));
+$('next-report').addEventListener('click',()=>{const next=demo.frames.findIndex((f,i)=>i>index&&f.kind==='social_report');if(next>=0){selectedEvent=null;explicitSite='all';$('site-filter').value='all';go(next);}});
+$('all-sites').addEventListener('click',()=>{selectedEvent=null;explicitSite='all';$('site-filter').value='all';render();});
+$('site-filter').append(new Option('All visible hospitals','all'));for(const h of hospitals)$('site-filter').append(new Option(h.site_id+' · '+h.name,h.site_id));
+$('site-filter').addEventListener('change',e=>{explicitSite=e.target.value;render();});
+for(const text of demo.limits)$('limits').append(node('li',text));
+if(demo.assessment_origin!=='scripted_forward_reference_not_a_model_run'){
+ $('origin-label').textContent='Supplied forward predictions';$('origin-note').textContent='Aligned prediction file supplied; its model origin has not been independently authenticated. No API calls are made by this demo. Social evidence does not add blood-demand units.';
+}
+render();
+</script>
+</body>
+</html>

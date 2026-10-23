@@ -28,7 +28,20 @@ def main(argv=None):
     social.add_argument("--reports", type=Path, required=True)
     social.add_argument("--predictions", type=Path, required=True)
     social.add_argument("--output", type=Path, required=True)
+    demo = commands.add_parser("demo", help="Build an offline chronological social, stock and proposal replay")
+    demo.add_argument("--hours", type=int, default=84)
+    demo.add_argument("--seed", type=int, default=42)
+    demo.add_argument("--predictions", type=Path, help="Optional aligned forward predictions; historical clocks are rejected")
+    demo.add_argument("--output", type=Path, default=ROOT / "runs" / "chronological-demo")
     args = parser.parse_args(argv)
+    if args.command == "demo":
+        from .demo import write_demo
+        try:
+            result = write_demo(args.output, args.data, hours=args.hours, seed=args.seed, predictions_path=args.predictions)
+        except (ValueError, FileExistsError) as error:
+            parser.error(str(error))
+        print(json.dumps(result, indent=2))
+        return
     if args.command == "normalize-social":
         from .social import normalize
         reports = [json.loads(s) for s in args.reports.read_text(encoding="utf-8").splitlines() if s.strip()]
