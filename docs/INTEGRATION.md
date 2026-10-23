@@ -40,7 +40,7 @@ The operational snapshot is dated **22 October 2026**, with partial-day usage. T
 
 The original social fixture covers 16–18 October. Joining a 22 October inventory snapshot into that earlier replay would leak future information. The original fixture and its measured API results remain unchanged. For a coherent forward demo, `data/canonical/social_reports.jsonl` shifts the invented template by seven local calendar days to **23–25 October**. Its timezone offset correctly changes from +02:00 to +01:00 on Sunday. These are hypothetical demo posts, not reports of real protests on those dates.
 
-The forward scenario has not been run through the Decisions API. Existing agreement scores apply only to the unchanged original replay. A future live run can use:
+At the data-integration stage, the forward scenario had not been run through the Decisions API. The later drone application completed a separate forward operational API run, documented in [DRONE-VERIFICATION.md](DRONE-VERIFICATION.md). The integration report records the earlier normalization stage. Existing social-benchmark agreement scores still apply only to the unchanged original replay. To run the full social-only decision rubric on the forward fixture separately:
 
 ```sh
 python run_decisions_replay.py --dataset data/canonical --run-dir runs/forward-social
@@ -95,6 +95,10 @@ The donation scenario retains the original contributor's ratios: expected inflow
 | Independent model answers could escalate a duplicate or leave an urgent event on MONITOR | Enforce the application policy in code; separate event lifecycle from evidence status. Preserve the observed baseline for comparison. |
 
 ## Evidence that is still absent
+
+The executable drone extension is documented in [DRONE-DEMO.md](DRONE-DEMO.md), with its separate forward API run in [DRONE-VERIFICATION.md](DRONE-VERIFICATION.md). It adds synthetic timestamped requests, explicit reservations and flight arrivals around this canonical snapshot. Drone parameters and scheduling are declared assumptions, not new source evidence.
+
+The components now have a combined offline chronological presentation: `python -m blood_response demo --output runs/combined-demo`. See [the demo walkthrough](DEMO.md) for its scripted-decision boundary, distinct inventory/report clocks and verification. The original integration contract and frozen social API results are unchanged.
 
 The files do not contain patient-level emergency requests, validated hospital catchments, real compatibility constraints, road closures mapped to routes, verified external ETAs, confirmed future blood receipts, or clinical social-to-demand conversion parameters. Those cannot be recovered by renaming columns. The application keeps them unknown or outside scope rather than manufacturing facts. This contribution does not claim to validate the medical model.
 

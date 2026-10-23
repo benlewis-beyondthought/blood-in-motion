@@ -1,0 +1,43 @@
+{
+  "scope": "One synthetic weekend plus the same initial eight-unit browser request for both controllers",
+  "live": {
+    "available": 397,
+    "reserved": 0,
+    "in_transit": 0,
+    "requested": 469,
+    "fulfilled": 392,
+    "unmet_at_deadline": 77,
+    "expired": 0,
+    "api_calls": 98,
+    "api_successes": 98,
+    "api_budget_remaining": 102,
+    "fallbacks": 0,
+    "missions": 76,
+    "conservation": "PASS"
+  },
+  "algorithm": {
+    "available": 397,
+    "reserved": 0,
+    "in_transit": 0,
+    "requested": 469,
+    "fulfilled": 392,
+    "unmet_at_deadline": 77,
+    "expired": 0,
+    "api_calls": 0,
+    "api_successes": 0,
+    "api_budget_remaining": null,
+    "fallbacks": 0,
+    "missions": 76,
+    "conservation": "PASS"
+  },
+  "reports": 36,
+  "live_plan_choices": 65,
+  "sole_feasible_plan_dispatches": 11,
+  "selected_algorithm_first_choice": 73,
+  "frames": 337,
+  "all_choices_feasible": true,
+  "browser_request_delivered": true,
+  "all_missions_within_payload_and_deadline": true,
+  "clinical_validation": false,
+  "note": "No claim of general model superiority; one authored scenario and one model run"
+}
